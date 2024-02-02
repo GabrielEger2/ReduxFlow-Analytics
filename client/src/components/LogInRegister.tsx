@@ -1,7 +1,7 @@
 // @ts-expect-error - ignore typescript error
 const LogInRegister = ({ formType, handleFormTypeChange }) => {
   return (
-    <div className="card-body w-full">
+    <div className="card-body w-80">
       <h2 className="card-title">
         {formType === 'login' ? 'LogIn' : 'Register'}
       </h2>
@@ -41,7 +41,10 @@ const LogInRegister = ({ formType, handleFormTypeChange }) => {
         <div className="form-control">
           <label className="label cursor-pointer">
             <span className="label-text">Remember me</span>
-            <input type="checkbox" className="checkbox checkbox-primary" />
+            <input
+              type="checkbox"
+              className="checkbox checkbox-primary [--chkfg:white]"
+            />
           </label>
         </div>
       )}
