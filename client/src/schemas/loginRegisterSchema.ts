@@ -14,6 +14,7 @@ export const registerSchema = yup.object().shape({
   newPassword: yup
     .string()
     .min(5, 'must be at least 5 characters')
+    .max(30, 'must be at most 30 characters')
     .matches(passwordRules, {
       message:
         'must have 1 upper case letter, 1 lower case letter, 1 numeric digit',
