@@ -27,7 +27,7 @@ const LogIn = () => {
             style={{ userSelect: 'none' }}
             initial={{ x: 0 }}
             animate={{ x: isLogin ? 320 : 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
             onAnimationComplete={handleAnimationComplete} // Set the onAnimationComplete callback
           />
         </div>
