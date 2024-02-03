@@ -1,9 +1,17 @@
 import { Form, Formik } from 'formik'
 import { loginSchema, registerSchema } from '../schemas/loginRegisterSchema'
 
-import { LogInRegisterProps } from '../types/LoginRegisterTypes'
+import {
+  LogInRegisterProps,
+  loginTypes,
+  registerTypes,
+  formAction,
+} from '../types/LoginRegisterTypes'
 
-const onSubmit = async (values, actions) => {
+const onSubmit = async (
+  values: loginTypes | registerTypes,
+  actions: formAction,
+) => {
   console.log(values)
   await new Promise((resolve) => setTimeout(resolve, 1000))
   actions.resetForm()
