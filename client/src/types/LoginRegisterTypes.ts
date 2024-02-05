@@ -6,7 +6,6 @@ export interface LogInRegisterProps {
 export type loginTypes = {
   email: string
   password: string
-  rememberMe: boolean
 }
 
 export type registerTypes = {
@@ -17,4 +16,9 @@ export type registerTypes = {
 
 export type formAction = {
   resetForm: () => void
+}
+
+export interface userState {
+  id: string | null
+  email: string | null
 }

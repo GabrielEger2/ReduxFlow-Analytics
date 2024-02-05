@@ -7,23 +7,43 @@ import {
   registerTypes,
   formAction,
 } from '../types/LoginRegisterTypes'
-
-const onSubmit = async (
-  values: loginTypes | registerTypes,
-  actions: formAction,
-) => {
-  console.log(values)
-  await new Promise((resolve) => setTimeout(resolve, 1000))
-  actions.resetForm()
-}
+import {
+  useRegiserMutation,
+  useLoginMutation,
+} from '../features/user/userApiSlice'
 
 const LogInRegister: React.FC<LogInRegisterProps> = ({
   formType,
   handleFormTypeChange,
 }) => {
+  const [register] = useRegiserMutation()
+  const [login] = useLoginMutation()
+
+  const onSubmit = async (
+    values: loginTypes | registerTypes,
+    actions: formAction,
+  ) => {
+    if (formType === 'login') {
+      const { email, password } = values as loginTypes
+      try {
+        await login({ email, password }).unwrap()
+      } catch (error) {
+        console.error('Failed to log in:', error)
+      }
+    } else {
+      const { email, newPassword: password } = values as registerTypes
+      try {
+        await register({ email, password }).unwrap()
+      } catch (error) {
+        console.error('Failed to register:', error)
+      }
+    }
+    actions.resetForm()
+  }
+
   const initialValues =
     formType === 'login'
-      ? { email: '', password: '', rememberMe: false }
+      ? { email: '', password: '' }
       : { email: '', newPassword: '', confirmPassword: '' }
 
   const validationSchema = formType === 'login' ? loginSchema : registerSchema
@@ -91,19 +111,6 @@ const LogInRegister: React.FC<LogInRegisterProps> = ({
                     className="input input-bordered w-full"
                   />
                 </label>
-                <div className="form-control">
-                  <label className="label cursor-pointer">
-                    <span className="label-text">Remember me</span>
-                    <input
-                      type="checkbox"
-                      id="rememberMe"
-                      name="rememberMe"
-                      onChange={handleChange}
-                      checked={values.rememberMe}
-                      className="checkbox checkbox-primary [--chkfg:white]"
-                    />
-                  </label>
-                </div>
               </>
             ) : (
               <>

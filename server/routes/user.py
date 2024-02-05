@@ -1,6 +1,7 @@
 """
 This module handles user operations.
 """
+from datetime import timedelta
 from flask import jsonify, make_response
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
@@ -81,11 +82,11 @@ class Login(MethodView):
         """Login"""
         user = UserModel.query.filter_by(email=new_data["email"]).first()
         if user and user.check_password(new_data["password"]):
-            access_token = create_access_token(identity=(user.email, user.id))
+            access_token = create_access_token(identity=(user.email, user.id), expires_delta=timedelta(hours=9))
             response = make_response(
                 jsonify(
                     logged_in_as=user.email,
-                    message="LogIn successful!"))
+                    message="LogIn successful!"), 200)
             set_access_cookies(response, access_token)
             return response
 

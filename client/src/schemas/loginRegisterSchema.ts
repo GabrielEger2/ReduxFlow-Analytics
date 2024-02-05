@@ -6,7 +6,6 @@ const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/
 export const loginSchema = yup.object().shape({
   email: yup.string().email('must be valid').required('is required'),
   password: yup.string().required('is required'),
-  rememberMe: yup.boolean(),
 })
 
 export const registerSchema = yup.object().shape({

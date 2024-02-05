@@ -8,6 +8,7 @@ It provides the `create_app` function to initialize and configure the Flask app.
 from flask import Flask
 from flask_jwt_extended import JWTManager
 from flask_smorest import Api
+from flask_cors import CORS
 
 from database import db
 from routes.user import blp as UserBlueprint
@@ -26,9 +27,13 @@ def create_app(db_url=None):
     app.config[
         "OPENAPI_SWAGGER_UI_URL"
     ] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
+    app.config['PREFERRED_URL_SCHEME'] = 'http' # change this in future
     app.config['JWT_SECRET_KEY'] = 'super-secret' #change this in future
     app.config['JWT_TOKEN_LOCATION'] = ['cookies']
     app.config['JWT_COOKIE_SECURE'] = False # change this in future
+    app.config['JWT_COOKIE_CSRF_PROTECT'] = True
+
+    CORS(app, origins=["*"], supports_credentials=True) # change this in future
 
     jwt = JWTManager(app)
 
