@@ -126,7 +126,7 @@ const LogInRegister: React.FC<LogInRegisterProps> = ({
                     </span>
                   </div>
                   <input
-                    type="text"
+                    type="password"
                     id="newPassword"
                     name="newPassword"
                     value={values.newPassword}
@@ -148,7 +148,7 @@ const LogInRegister: React.FC<LogInRegisterProps> = ({
                     </span>
                   </div>
                   <input
-                    type="text"
+                    type="password"
                     id="confirmPassword"
                     name="confirmPassword"
                     value={values.confirmPassword}

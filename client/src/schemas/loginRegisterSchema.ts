@@ -21,6 +21,6 @@ export const registerSchema = yup.object().shape({
     .required('Required'),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref('password')], 'must match New Password')
+    .oneOf([yup.ref('newPassword')], 'must match New Password')
     .required('is required'),
 })
