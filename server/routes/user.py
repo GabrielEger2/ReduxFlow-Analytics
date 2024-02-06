@@ -86,8 +86,27 @@ class Login(MethodView):
             response = make_response(
                 jsonify(
                     logged_in_as=user.email,
-                    message="LogIn successful!"), 200)
+                    message="LogIn successful!"))
             set_access_cookies(response, access_token)
             return response
 
         abort(401, message="Invalid email or password")
+
+@blp.route("/logout")
+class Logout(MethodView):
+    """Handles user logout."""
+    @blp.response(200)
+    def post(self):
+        """Logout"""
+        response = make_response(jsonify(message="LogOut successful!"))
+        # usent_jwt_cookies(response)
+        return response
+
+@blp.route("/validate-token")
+class ValidateToken(MethodView):
+    """Handles token validation."""
+    @jwt_required()
+    @blp.response(200)
+    def get(self):
+        """Validate token"""
+        return jsonify(message="Token is valid")

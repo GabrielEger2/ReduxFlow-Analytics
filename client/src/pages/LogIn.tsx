@@ -6,7 +6,6 @@ import LogInRegister from '../components/LogInRegister'
 const LogIn = () => {
   const [isLogin, setIsLogin] = useState(false)
   const [isAnimationComplete, setIsAnimationComplete] = useState(false)
-
   const handleFormTypeChange = () => {
     setIsLogin(!isLogin)
     setIsAnimationComplete(false) // Reset animation completion flag
