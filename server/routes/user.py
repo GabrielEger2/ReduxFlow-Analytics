@@ -107,6 +107,6 @@ class ValidateToken(MethodView):
     """Handles token validation."""
     @jwt_required()
     @blp.response(200)
-    def get(self):
+    def post(self):
         """Validate token"""
         return jsonify(message="Token is valid")
