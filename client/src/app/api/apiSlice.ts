@@ -13,7 +13,7 @@ function getCookie(cookieName: string): string | undefined {
 }
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://127.0.0.1:5000/api',
+  baseUrl: 'http://localhost:5000/api',
   credentials: 'include',
   prepareHeaders: (headers) => {
     const csrfToken = getCookie('csrf_access_token')
