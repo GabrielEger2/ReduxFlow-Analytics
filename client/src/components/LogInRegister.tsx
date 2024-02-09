@@ -6,7 +6,7 @@ import {
   loginTypes,
   registerTypes,
   formAction,
-} from '../types/LoginRegisterTypes'
+} from '../types/loginRegisterTypes'
 import {
   useRegiserMutation,
   useLoginMutation,
