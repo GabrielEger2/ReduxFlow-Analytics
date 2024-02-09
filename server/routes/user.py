@@ -6,7 +6,7 @@ from flask import jsonify, make_response
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from sqlalchemy.exc import SQLAlchemyError
-from flask_jwt_extended import create_access_token, set_access_cookies, jwt_required
+from flask_jwt_extended import create_access_token, set_access_cookies, jwt_required, unset_jwt_cookies
 
 from database import db
 from models import UserModel
@@ -81,7 +81,7 @@ class ItemById(MethodView):
         
         if user is None:
             abort(404, message="User not found")
-            
+
         db.session.delete(user)
         db.session.commit()
 
@@ -111,7 +111,7 @@ class Logout(MethodView):
     def post(self):
         """Logout"""
         response = make_response(jsonify(message="LogOut successful!"))
-        # usent_jwt_cookies(response)
+        unset_jwt_cookies(response)
         return response
 
 @blp.route("/validate-token")
