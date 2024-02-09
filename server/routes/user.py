@@ -51,7 +51,11 @@ class ItemById(MethodView):
     @blp.response(200, UserSchema)
     def get(self, user_id):
         """Get user by ID"""
-        user = UserModel.query.get_or_404(user_id)
+        user = db.session.get(UserModel, user_id)
+        
+        if user is None:
+            abort(404, message="User not found")
+        
         return user
 
     @jwt_required()
@@ -59,7 +63,11 @@ class ItemById(MethodView):
     @blp.response(200, UserSchema)
     def put(self, new_data, user_id):
         """Update user by ID"""
-        user = UserModel.query.get_or_404(user_id)
+        user = db.session.get(UserModel, user_id)
+        
+        if user is None:
+            abort(404, message="User not found")
+
         for key, value in new_data.items():
             setattr(user, key, value)
         db.session.commit()
@@ -69,7 +77,11 @@ class ItemById(MethodView):
     @blp.response(204)
     def delete(self, user_id):
         """Delete user by ID"""
-        user = UserModel.query.get_or_404(user_id)
+        user = db.session.get(UserModel, user_id)
+        
+        if user is None:
+            abort(404, message="User not found")
+            
         db.session.delete(user)
         db.session.commit()
 
