@@ -48,3 +48,13 @@ def test_validate_token(test_client, auth_headers):
     response = test_client.post('/api/user/validate-token', headers=auth_headers)
     assert response.status_code == 200
     assert response.json['message'] == 'Token is valid'
+
+@pytest.mark.parametrize("user_data, expected_status_code", [
+    ({'email': 'test.com', 'password': 'test'}, 422),
+    ({'email': 'fakeuser@example.com', 'password': 'Password1234'}, 401),
+    ({'email': 'test@example.com', 'password': 'Test1234'}, 200)
+])
+def test_login(test_client, user_data, expected_status_code):
+    """Test successful login returns a valid access token and status code 200."""
+    response = test_client.post('/api/user/login', json=user_data)
+    assert response.status_code == expected_status_code
