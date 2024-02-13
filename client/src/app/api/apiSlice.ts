@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-function getCookie(cookieName: string): string | undefined {
+export function getCookie(cookieName: string): string | undefined {
   const value = `; ${document.cookie}`
   const parts = value.split(`; ${cookieName}=`)
   if (parts.length === 2) {
@@ -12,7 +12,7 @@ function getCookie(cookieName: string): string | undefined {
   return undefined
 }
 
-const baseQuery = fetchBaseQuery({
+export const baseQuery = fetchBaseQuery({
   baseUrl: 'http://localhost:5000/api',
   credentials: 'include',
   prepareHeaders: (headers) => {

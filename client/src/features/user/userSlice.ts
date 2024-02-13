@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { userState } from '../../types/LoginRegisterTypes'
+import { userState } from '../../types/loginRegisterTypes'
 
 const getFromLocalStorage = (key: string) => {
   const value = localStorage.getItem(key)
