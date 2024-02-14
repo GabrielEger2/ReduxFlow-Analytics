@@ -65,7 +65,9 @@
       "<rootDir>/src/setupTests.ts"
     ],
     "collectCoverageFrom": [
-      "<rootDir>/src/**/*.{ts,tsx}"
+      "<rootDir>/src/components/*.{ts,tsx}",
+      "<rootDir>/src/pages/*.{ts,tsx}",
+      "<rootDir>/src/features/*.{ts,tsx}"
     ]
   }
 }
