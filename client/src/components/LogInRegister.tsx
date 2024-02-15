@@ -1,5 +1,6 @@
 import { Form, Formik } from 'formik'
 import { loginSchema, registerSchema } from '../schemas/loginRegisterSchema'
+import { useDispatch } from 'react-redux'
 
 import {
   LogInRegisterProps,
@@ -11,6 +12,7 @@ import {
   useRegiserMutation,
   useLoginMutation,
 } from '../features/user/userApiSlice'
+import { setUser } from '../features/user/userSlice'
 
 const LogInRegister: React.FC<LogInRegisterProps> = ({
   formType,
@@ -18,6 +20,7 @@ const LogInRegister: React.FC<LogInRegisterProps> = ({
 }) => {
   const [register] = useRegiserMutation()
   const [login] = useLoginMutation()
+  const dispatch = useDispatch()
 
   const onSubmit = async (
     values: loginTypes | registerTypes,
@@ -26,7 +29,11 @@ const LogInRegister: React.FC<LogInRegisterProps> = ({
     if (formType === 'login') {
       const { email, password } = values as loginTypes
       try {
-        await login({ email, password }).unwrap()
+        const response = await login({ email, password }).unwrap()
+        dispatch(
+          setUser({ id: response.logged_id, email: response.logged_email }),
+        )
+        console.log(response.message)
       } catch (error) {
         console.error('Failed to log in:', error)
       }

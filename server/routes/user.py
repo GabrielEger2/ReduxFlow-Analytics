@@ -97,7 +97,8 @@ class Login(MethodView):
             access_token = create_access_token(identity=(user.email, user.id), expires_delta=timedelta(hours=9))
             response = make_response(
                 jsonify(
-                    logged_in_as=user.email,
+                    logged_id=user.id,
+                    logged_email=user.email,
                     message="LogIn successful!"))
             set_access_cookies(response, access_token)
             return response
