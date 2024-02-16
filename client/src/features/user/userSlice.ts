@@ -5,12 +5,7 @@ import { userState } from '../../types/loginRegisterTypes'
 const getFromLocalStorage = (key: string) => {
   const value = localStorage.getItem(key)
   if (value && value !== 'undefined') {
-    try {
-      return JSON.parse(value)
-    } catch (e) {
-      console.error(`Error parsing local storage key ${key}:`, e)
-      return null
-    }
+    return value
   }
   return null
 }
