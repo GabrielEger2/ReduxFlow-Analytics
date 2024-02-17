@@ -1,5 +1,5 @@
 """
-This module handles user operations.
+This module contains the routes for the user blueprint.
 """
 from datetime import timedelta
 from flask import jsonify, make_response
