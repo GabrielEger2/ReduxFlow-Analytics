@@ -1,12 +1,12 @@
 """
-This module handles user operations.
+This module contains the routes for the user blueprint.
 """
 from datetime import timedelta
 from flask import jsonify, make_response
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from sqlalchemy.exc import SQLAlchemyError
-from flask_jwt_extended import create_access_token, set_access_cookies, jwt_required
+from flask_jwt_extended import create_access_token, set_access_cookies, jwt_required, unset_jwt_cookies
 
 from database import db
 from models import UserModel
@@ -51,7 +51,11 @@ class ItemById(MethodView):
     @blp.response(200, UserSchema)
     def get(self, user_id):
         """Get user by ID"""
-        user = UserModel.query.get_or_404(user_id)
+        user = db.session.get(UserModel, user_id)
+        
+        if user is None:
+            abort(404, message="User not found")
+        
         return user
 
     @jwt_required()
@@ -59,7 +63,11 @@ class ItemById(MethodView):
     @blp.response(200, UserSchema)
     def put(self, new_data, user_id):
         """Update user by ID"""
-        user = UserModel.query.get_or_404(user_id)
+        user = db.session.get(UserModel, user_id)
+        
+        if user is None:
+            abort(404, message="User not found")
+
         for key, value in new_data.items():
             setattr(user, key, value)
         db.session.commit()
@@ -69,7 +77,11 @@ class ItemById(MethodView):
     @blp.response(204)
     def delete(self, user_id):
         """Delete user by ID"""
-        user = UserModel.query.get_or_404(user_id)
+        user = db.session.get(UserModel, user_id)
+        
+        if user is None:
+            abort(404, message="User not found")
+
         db.session.delete(user)
         db.session.commit()
 
@@ -85,7 +97,8 @@ class Login(MethodView):
             access_token = create_access_token(identity=(user.email, user.id), expires_delta=timedelta(hours=9))
             response = make_response(
                 jsonify(
-                    logged_in_as=user.email,
+                    logged_id=user.id,
+                    logged_email=user.email,
                     message="LogIn successful!"))
             set_access_cookies(response, access_token)
             return response
@@ -99,7 +112,7 @@ class Logout(MethodView):
     def post(self):
         """Logout"""
         response = make_response(jsonify(message="LogOut successful!"))
-        # usent_jwt_cookies(response)
+        unset_jwt_cookies(response)
         return response
 
 @blp.route("/validate-token")
