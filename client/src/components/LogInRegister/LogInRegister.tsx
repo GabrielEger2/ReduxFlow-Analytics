@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Form, Formik } from 'formik'
 import { loginSchema, registerSchema } from '../../schemas/loginRegisterSchema'
 import { useDispatch } from 'react-redux'
@@ -22,11 +23,13 @@ const LogInRegister: React.FC<LogInRegisterProps> = ({
   const [register] = useRegiserMutation()
   const [login] = useLoginMutation()
   const dispatch = useDispatch()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const onSubmit = async (
     values: loginTypes | registerTypes,
     actions: formAction,
   ) => {
+    setIsLoading(true)
     if (formType === 'login') {
       const { email, password } = values as loginTypes
       try {
@@ -46,6 +49,7 @@ const LogInRegister: React.FC<LogInRegisterProps> = ({
         console.error('Failed to register:', error)
       }
     }
+    setIsLoading(false)
     actions.resetForm()
   }
 
@@ -146,8 +150,13 @@ const LogInRegister: React.FC<LogInRegisterProps> = ({
                     !isValid || values.email === '' || values.password === ''
                   }
                   className="btn btn-primary w-full text-base-100"
+                  type="submit"
                 >
-                  Login
+                  {isLoading ? (
+                    <span className="loading loading-dots loading-md" />
+                  ) : (
+                    'Login'
+                  )}
                 </button>
               ) : (
                 <button
@@ -158,8 +167,13 @@ const LogInRegister: React.FC<LogInRegisterProps> = ({
                     values.confirmPassword === ''
                   }
                   className="btn btn-primary w-full text-base-100"
+                  type="submit"
                 >
-                  Register
+                  {isLoading ? (
+                    <span className="loading loading-dots loading-md" />
+                  ) : (
+                    'Register'
+                  )}
                 </button>
               )}
             </div>

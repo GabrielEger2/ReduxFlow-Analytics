@@ -5,8 +5,8 @@ import LogInRegister from '../components/LogInRegister/LogInRegister'
 import CSIRACRPhoto from '../assets/imgs/CSIRACPhoto.jpg'
 
 const LogIn = () => {
-  const [isLogin, setIsLogin] = useState(false)
-  const [isAnimationComplete, setIsAnimationComplete] = useState(false)
+  const [isLogin, setIsLogin] = useState<boolean>(false)
+  const [isAnimationComplete, setIsAnimationComplete] = useState<boolean>(false)
   const handleFormTypeChange = () => {
     setIsLogin(!isLogin)
     setIsAnimationComplete(false) // Reset animation completion flag
