@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 import LogInRegister from '../components/LogInRegister/LogInRegister'
-import CSIRACRPhone from '../assets/imgs/CSIRACPhoto.jpg'
+import CSIRACRPhoto from '../assets/imgs/CSIRACPhoto.jpg'
 
 const LogIn = () => {
   const [isLogin, setIsLogin] = useState(false)
@@ -22,8 +22,8 @@ const LogIn = () => {
         <div className="hidden absolute sm:block h-full">
           <motion.img
             className="object-cover w-80 h-full"
-            src={CSIRACRPhone}
-            alt="Album"
+            src={CSIRACRPhoto}
+            alt="Photo of the CSIRAC computer in 1949."
             style={{ userSelect: 'none' }}
             initial={{ x: 0 }}
             animate={{ x: isLogin ? 320 : 0 }}
