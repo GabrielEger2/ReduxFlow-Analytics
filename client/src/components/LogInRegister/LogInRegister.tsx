@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik'
-import { loginSchema, registerSchema } from '../schemas/loginRegisterSchema'
+import { loginSchema, registerSchema } from '../../schemas/loginRegisterSchema'
 import { useDispatch } from 'react-redux'
 
 import {
@@ -7,12 +7,13 @@ import {
   loginTypes,
   registerTypes,
   formAction,
-} from '../types/loginRegisterTypes'
+} from '../../types/loginRegisterTypes'
 import {
   useRegiserMutation,
   useLoginMutation,
-} from '../features/user/userApiSlice'
-import { setUser } from '../features/user/userSlice'
+} from '../../features/user/userApiSlice'
+import { setUser } from '../../features/user/userSlice'
+import FormField from '../layout/FormField'
 
 const LogInRegister: React.FC<LogInRegisterProps> = ({
   formType,
@@ -76,95 +77,51 @@ const LogInRegister: React.FC<LogInRegisterProps> = ({
           isValid,
         }) => (
           <Form onSubmit={handleSubmit}>
-            <label className="form-control w-full">
-              <div className="label">
-                <span className="label-text">
-                  Email{' '}
-                  <span className="text-error">
-                    {touched.email && errors.email && errors.email}
-                  </span>
-                </span>
-              </div>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="Valid email address"
-                className="input input-bordered w-full"
-              />
-            </label>
+            <FormField
+              label="Email"
+              type="email"
+              name="email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors.email}
+              touched={!!touched.email}
+            />
             {formType === 'login' ? (
               <>
-                <label className="form-control w-full">
-                  <div className="label">
-                    <span className="label-text">
-                      Password{' '}
-                      <span className="text-error">
-                        {touched.password && errors.password && errors.password}
-                      </span>
-                    </span>
-                  </div>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={values.password}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    placeholder="Valid email address"
-                    className="input input-bordered w-full"
-                  />
-                </label>
+                <FormField
+                  label="Password"
+                  type="password"
+                  name="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.password}
+                  touched={!!touched.password}
+                />
               </>
             ) : (
               <>
-                <label className="form-control w-full">
-                  <div className="label">
-                    <span className="label-text">
-                      New Password{' '}
-                      <span className="text-error">
-                        {touched.newPassword &&
-                          errors.newPassword &&
-                          errors.newPassword}
-                      </span>
-                    </span>
-                  </div>
-                  <input
-                    type="password"
-                    id="newPassword"
-                    name="newPassword"
-                    value={values.newPassword}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    placeholder="Valid email address"
-                    className="input input-bordered w-full"
-                  />
-                </label>
-                <label className="form-control w-full">
-                  <div className="label">
-                    <span className="label-text">
-                      Confirm Password{' '}
-                      <span className="text-error">
-                        {touched.confirmPassword &&
-                          errors.confirmPassword &&
-                          errors.confirmPassword}
-                      </span>
-                    </span>
-                  </div>
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    value={values.confirmPassword}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    placeholder="Valid email address"
-                    className="input input-bordered w-full"
-                  />
-                </label>
+                <FormField
+                  label="New Password"
+                  type="password"
+                  name="newPassword"
+                  value={values.newPassword}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.newPassword}
+                  touched={!!touched.newPassword}
+                />
+                <FormField
+                  label="Confirm Password"
+                  type="password"
+                  name="confirmPassword"
+                  value={values.confirmPassword}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.confirmPassword}
+                  touched={!!touched.confirmPassword}
+                />
               </>
             )}
             <div className="form-control">
