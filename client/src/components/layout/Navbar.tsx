@@ -6,10 +6,10 @@ const Navbar = () => {
       <div className="navbar max-w-[1600px] mx-4 flex justify-between">
         <a href="/" className="space-x-3">
           <BiSolidWidget size={30} />
-          <p className="font-semibold text-xl">ReduxFlux</p>
+          <p className="font-semibold text-xl">ReduxFlow</p>
         </a>
-        <div>
-          <ul className="flex space-x-6 items-center">
+        <div className="hidden sm:block">
+          <ul className="flex space-x-3 md:space-x-6 items-center">
             <p className="text-lg font-semibold">About Us</p>
             <p className="text-lg font-semibold">Documentation</p>
             <p className="text-lg font-semibold">Pricing</p>
