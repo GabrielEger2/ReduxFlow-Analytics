@@ -10,9 +10,24 @@ const Navbar = () => {
         </a>
         <div className="hidden sm:block">
           <ul className="flex space-x-3 md:space-x-6 items-center">
-            <p className="text-lg font-semibold">About Us</p>
-            <p className="text-lg font-semibold">Documentation</p>
-            <p className="text-lg font-semibold">Pricing</p>
+            <a className="translate-y-0.5 group">
+              <p className="text-lg font-semibold cursor-pointer">Home</p>
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-1 bg-blue-800" />
+            </a>
+            <a className="translate-y-0.5 group">
+              <p className="text-lg font-semibold cursor-pointer">About Us</p>
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-1 bg-blue-800" />
+            </a>
+            <a className="translate-y-0.5 group">
+              <p className="text-lg font-semibold cursor-pointer">
+                Documentation
+              </p>
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-1 bg-blue-800" />
+            </a>
+            <a className="translate-y-0.5 group">
+              <p className="text-lg font-semibold cursor-pointer">Pricing</p>
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-1 bg-blue-800" />
+            </a>
             <a href="/login" className="btn btn-sm btn-outline">
               Sign In{' '}
               <span>

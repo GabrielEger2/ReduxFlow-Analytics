@@ -3,14 +3,17 @@ import HeroSwapCards from '../components/Home/HeroSwapCards'
 
 const Home = () => {
   return (
-    <main className="flex justify-center w-full min-h-screen">
-      <div className="flex flex-col lg:flex-row w-full max-w-[1600px] lg:mx-4 mt-24">
+    <main className="flex flex-col items-center w-full">
+      <div className="flex flex-col lg:flex-row w-full max-w-[1600px] min-h-screen items-center py-16">
         <div className="lg:w-[50%] flex justify-center">
           <HeroText />
         </div>
-        <div className="lg:w-[50%] h-full flex justify-center">
+        <div className="lg:w-[50%] flex justify-center">
           <HeroSwapCards />
         </div>
+      </div>
+      <div className="mt-20">
+        <p className="text-2xl">teste</p>
       </div>
     </main>
   )
