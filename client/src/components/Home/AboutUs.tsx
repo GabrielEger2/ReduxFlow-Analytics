@@ -7,9 +7,9 @@ import ourValues from '../../assets/imgs/ourValues.jpg'
 
 const AboutUs = () => {
   return (
-    <div>
+    <div className="px-8">
       <div className="flex w-full items-end">
-        <div className="w-1/2 flex justify-center">
+        <div className="w-full md:w-1/2 flex justify-center">
           <div>
             <div className="text-6xl underline font-bold mb-10 text-center">
               About Us
@@ -23,7 +23,7 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/2 flex justify-center">
+        <div className="w-1/2 justify-center hidden md:flex">
           <BiSolidWidget size={150} />
         </div>
       </div>
