@@ -7,16 +7,15 @@ const HeroText = () => {
         <span className="block mb-2 md:mb-4 md:text-lg text-primary font-medium">
           Welcome to ReduxFlow
         </span>
-        <h3 className="text-4xl md:text-6xl lg:text-8xl font-bold">
-          Make Managing your project more <br className="sm:hidden" />
-          <span>
+        <h3 className="text-4xl md:text-6xl lg:text-8xl font-bold inline">
+          Make Managing your project more
+          <span className="inline whitespace-nowrap text-primary">
             {' '}
             <ReactTyped
               strings={['fun', 'easy', 'fast', 'simple']}
               typeSpeed={80}
               backSpeed={100}
               loop
-              className="text-primary"
             />
           </span>
         </h3>

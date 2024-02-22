@@ -2,7 +2,7 @@ import { HeroCardProps } from '../../types/homeTypes'
 
 const HeroCard = ({ image, quote, person, workingPosition }: HeroCardProps) => {
   return (
-    <div className="card w-64 sm:w-80 shadow-xl border border-base-200 bg-transparent backdrop-blur">
+    <section className="card w-64 sm:w-80 shadow-xl border border-base-200 bg-transparent backdrop-blur">
       <figure className="flex justify-center mt-14">
         <img
           src={image}
@@ -18,7 +18,7 @@ const HeroCard = ({ image, quote, person, workingPosition }: HeroCardProps) => {
           {person} <br /> @ {workingPosition}.
         </p>
       </div>
-    </div>
+    </section>
   )
 }
 

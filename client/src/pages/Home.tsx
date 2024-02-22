@@ -1,8 +1,12 @@
 import HeroText from '../components/Home/HeroText'
 import HeroSwapCards from '../components/Home/HeroSwapCards'
 import AboutUs from '../components/Home/AboutUs'
+import Pricing from '../components/Home/Pricing'
+import { useScrollToTop } from '../hooks/useScrollToTop'
 
 const Home = () => {
+  useScrollToTop()
+
   return (
     <main className="flex justify-center w-full">
       <div className="w-full max-w-[1600px]">
@@ -19,6 +23,9 @@ const Home = () => {
         </div>
         <div id="aboutUs" className="flex w-full justify-center min-h-screen">
           <AboutUs />
+        </div>
+        <div id="pricing" className="flex w-full justify-center min-h-screen">
+          <Pricing />
         </div>
       </div>
     </main>

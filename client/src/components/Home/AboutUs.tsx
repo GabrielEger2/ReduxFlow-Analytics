@@ -7,7 +7,7 @@ import ourValues from '../../assets/imgs/ourValues.jpg'
 
 const AboutUs = () => {
   return (
-    <div className="px-8">
+    <section className="px-8">
       <div className="flex w-full items-end">
         <div className="w-full md:w-1/2 flex justify-center">
           <div>
@@ -69,7 +69,7 @@ const AboutUs = () => {
           ]}
         />
       </div>
-    </div>
+    </section>
   )
 }
 

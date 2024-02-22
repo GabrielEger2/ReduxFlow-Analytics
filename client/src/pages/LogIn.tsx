@@ -3,8 +3,10 @@ import { motion } from 'framer-motion'
 
 import LogInRegister from '../components/LogInRegister/LogInRegister'
 import CSIRACRPhoto from '../assets/imgs/CSIRACPhoto.jpg'
+import { useScrollToTop } from '../hooks/useScrollToTop'
 
 const LogIn = () => {
+  useScrollToTop()
   const [isLogin, setIsLogin] = useState<boolean>(false)
   const [isAnimationComplete, setIsAnimationComplete] = useState<boolean>(false)
   const handleFormTypeChange = () => {

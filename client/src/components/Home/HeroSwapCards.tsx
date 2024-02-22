@@ -70,7 +70,7 @@ const HeroSwapCards = () => {
   }, [cardState])
 
   return (
-    <div className="flex relative items-center">
+    <section className="flex relative items-center">
       {cards.map((card, index) => (
         <motion.div
           key={index}
@@ -88,7 +88,7 @@ const HeroSwapCards = () => {
           />
         </motion.div>
       ))}
-    </div>
+    </section>
   )
 }
 
