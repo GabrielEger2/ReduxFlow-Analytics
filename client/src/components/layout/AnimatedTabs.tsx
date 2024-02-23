@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 interface AnimatedTabsProps {
   tabs: string[]
+  onTabSelect: (selectedTab: string) => void
 }
 
 interface TabProps {
@@ -11,16 +12,20 @@ interface TabProps {
   setSelected: (text: string) => void
 }
 
-const AnimatedTabs: React.FC<AnimatedTabsProps> = ({ tabs }) => {
+const AnimatedTabs: React.FC<AnimatedTabsProps> = ({ tabs, onTabSelect }) => {
   const [selected, setSelected] = useState(tabs[0])
 
+  const handleTabSelect = (tab: string) => {
+    setSelected(tab)
+    onTabSelect(tab)
+  }
   return (
     <div className="px-4 flex items-center flex-wrap space-x-4">
       {tabs.map((tab) => (
         <Tab
           text={tab}
           selected={selected === tab}
-          setSelected={setSelected}
+          setSelected={handleTabSelect}
           key={tab}
         />
       ))}
