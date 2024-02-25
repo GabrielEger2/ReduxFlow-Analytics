@@ -21,10 +21,16 @@ const Home = () => {
             <HeroSwapCards />
           </div>
         </div>
-        <div id="aboutUs" className="flex w-full justify-center min-h-screen">
+        <div
+          id="aboutUs"
+          className="flex w-full justify-center lg:min-h-screen"
+        >
           <AboutUs />
         </div>
-        <div id="pricing" className="flex w-full justify-center min-h-screen">
+        <div
+          id="pricing"
+          className="flex w-full justify-center lg:min-h-screen"
+        >
           <Pricing />
         </div>
       </div>

@@ -1,9 +1,11 @@
 import { BiSolidWidget, BiUser } from 'react-icons/bi'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 import useCustomScroll from '../../hooks/useCustomScroll'
 
 const Navbar = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
   const { handleLinkClick } = useCustomScroll()
 
   return (
@@ -20,7 +22,11 @@ const Navbar = () => {
           <ul className="flex space-x-3 md:space-x-6 items-center">
             <a
               data-href="#hero"
-              onClick={handleLinkClick}
+              onClick={
+                location.pathname === '/'
+                  ? handleLinkClick
+                  : () => navigate('/')
+              }
               className="translate-y-0.5 group"
             >
               <p className="text-lg font-semibold cursor-pointer">Home</p>
@@ -28,7 +34,11 @@ const Navbar = () => {
             </a>
             <a
               data-href="#aboutUs"
-              onClick={handleLinkClick}
+              onClick={
+                location.pathname === '/'
+                  ? handleLinkClick
+                  : () => navigate('/')
+              }
               className="translate-y-0.5 group"
             >
               <p className="text-lg font-semibold cursor-pointer">About Us</p>
@@ -36,7 +46,11 @@ const Navbar = () => {
             </a>
             <a
               data-href="#pricing"
-              onClick={handleLinkClick}
+              onClick={
+                location.pathname === '/'
+                  ? handleLinkClick
+                  : () => navigate('/')
+              }
               className="translate-y-0.5 group"
             >
               <p className="text-lg font-semibold cursor-pointer">Pricing</p>

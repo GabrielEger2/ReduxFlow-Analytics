@@ -7,18 +7,19 @@ const HeroText = () => {
         <span className="block mb-2 md:mb-4 md:text-lg text-primary font-medium">
           Welcome to ReduxFlow
         </span>
-        <h3 className="text-4xl md:text-6xl lg:text-8xl font-bold inline">
-          Make Managing your project more
-          <span className="inline whitespace-nowrap text-primary">
+        <h1 className="inline text-4xl md:text-6xl lg:text-8xl font-bold">
+          Make Managing your project more{' '}
+          <span>
             {' '}
             <ReactTyped
               strings={['fun', 'easy', 'fast', 'simple']}
               typeSpeed={80}
               backSpeed={100}
               loop
+              className="text-primary inline-block w-20"
             />
           </span>
-        </h3>
+        </h1>
         <p className="text-lg font-semibold text-gray-600 mt-6 mb-4 lg:mt-10 lg:mb-8">
           ReduxFlow is a user-friendly and efficient management tool crafted to
           enhance the experience of project management. It offers a streamlined
