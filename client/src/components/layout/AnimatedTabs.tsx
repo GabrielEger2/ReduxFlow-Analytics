@@ -1,16 +1,7 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 
-interface AnimatedTabsProps {
-  tabs: string[]
-  onTabSelect: (selectedTab: string) => void
-}
-
-interface TabProps {
-  text: string
-  selected: boolean
-  setSelected: (text: string) => void
-}
+import { AnimatedTabsProps, TabProps } from '../../types/layoutTypes'
 
 const AnimatedTabs: React.FC<AnimatedTabsProps> = ({ tabs, onTabSelect }) => {
   const [selected, setSelected] = useState(tabs[0])

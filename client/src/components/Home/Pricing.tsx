@@ -23,7 +23,7 @@ const cards = [
     title: 'Enterprise',
     priceMonthly: 99,
     priceAnnual: 600,
-    priceAllTime: 2999,
+    priceAllTime: 4999,
     text: 'For large businesses looking to scale and grow at a rapid pace',
   },
 ]

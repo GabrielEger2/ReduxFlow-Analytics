@@ -1,15 +1,6 @@
 import { motion } from 'framer-motion'
 
-interface PriceCardProps {
-  cardData: {
-    priceMonthly: number
-    priceAnnual: number
-    priceAllTime: number
-    text: string
-    title: string
-  }
-  selected: string
-}
+import { PriceCardProps } from '../../types/layoutTypes'
 
 const PriceCard: React.FC<PriceCardProps> = ({ cardData, selected }) => {
   return (
@@ -56,12 +47,25 @@ const PriceCard: React.FC<PriceCardProps> = ({ cardData, selected }) => {
                       : 'error'}
                 /
                 <br />
-                Month
+                {selected === 'Monthly'
+                  ? 'Month'
+                  : selected === 'Annual'
+                    ? 'Year'
+                    : selected === 'All Time'
+                      ? 'Lifetime'
+                      : 'error'}
               </motion.span>
               <p>{cardData.text}</p>
             </div>
             <button
-              onClick={() => document.getElementById('modal').showModal()}
+              onClick={() => {
+                const modalElement = document.getElementById('modal')
+                if (modalElement) {
+                  ;(modalElement as HTMLDialogElement).showModal()
+                } else {
+                  console.error('No element with id "modal" found')
+                }
+              }}
               className="absolute bottom-4 left-4 right-4 z-20 btn hover:bg-transparent hover:text-base-100 transition-all duration-500"
             >
               Get it now
