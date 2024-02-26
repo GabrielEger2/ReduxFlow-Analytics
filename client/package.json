@@ -69,7 +69,8 @@
     "collectCoverageFrom": [
       "<rootDir>/src/components/**/*.{ts,tsx}",
       "<rootDir>/src/pages/*.{ts,tsx}",
-      "<rootDir>/src/features/**/*.{ts,tsx}"
+      "<rootDir>/src/features/**/*.{ts,tsx}",
+      "<rootDir>/src/hooks/**/*.{ts,tsx}"
     ]
   }
 }
