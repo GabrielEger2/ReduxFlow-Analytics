@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import PriceCard from '../PriceCard' // Adjust the import path based on your file structure
+import PriceCard from '../PriceCard'
 
 describe('PriceCard Component Tests', () => {
   const cardData = {
@@ -26,11 +26,4 @@ describe('PriceCard Component Tests', () => {
     render(<PriceCard cardData={cardData} selected="All Time" />)
     expect(screen.getByText('$300/Lifetime')).toBeInTheDocument()
   })
-
-  //   it('shows modal on button click', async () => {
-  //     render(<PriceCard cardData={cardData} selected="Monthly" />)
-  //     fireEvent.click(screen.getByText('Get it now'))
-  //     const dialog = await screen.findByRole('dialog')
-  //     expect(dialog).toBeInTheDocument()
-  //   })
 })
