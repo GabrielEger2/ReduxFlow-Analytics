@@ -30,3 +30,12 @@ export interface TabProps {
   selected: boolean
   setSelected: (text: string) => void
 }
+
+export interface AnimatedModalProps {
+  isOpen: boolean
+  setIsOpen: (isOpen: boolean) => void
+  icon: React.ReactElement
+  title: string
+  text: string
+  button: string
+}

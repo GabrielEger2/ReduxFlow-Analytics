@@ -1,8 +1,13 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { BiLogoDevTo } from 'react-icons/bi'
 
 import { PriceCardProps } from '../../types/layoutTypes'
+import AnimatedModal from './AnimatedModal'
 
 const PriceCard: React.FC<PriceCardProps> = ({ cardData, selected }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+
   return (
     <>
       <section className="px-3 py-4">
@@ -58,14 +63,7 @@ const PriceCard: React.FC<PriceCardProps> = ({ cardData, selected }) => {
               <p>{cardData.text}</p>
             </div>
             <button
-              onClick={() => {
-                const modalElement = document.getElementById('modal')
-                if (modalElement) {
-                  ;(modalElement as HTMLDialogElement).showModal()
-                } else {
-                  console.error('No element with id "modal" found')
-                }
-              }}
+              onClick={() => setIsOpen(true)}
               className="absolute bottom-4 left-4 right-4 z-20 btn hover:bg-transparent hover:text-base-100 transition-all duration-500"
             >
               Get it now
@@ -127,35 +125,19 @@ const PriceCard: React.FC<PriceCardProps> = ({ cardData, selected }) => {
           </motion.div>
         </div>
       </section>
-      <dialog id="modal" className="modal">
-        <div className="modal-box">
-          <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-              ✕
-            </button>
-          </form>
-          <h3 className="font-bold text-lg">Hello from the DEV!</h3>
-          <p className="mt-4 mb-2">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hey there! Just a little heads-up:
-            what you&apos;re seeing isn&apos;t an actual product. Everything in
-            this project is designed purely for demonstration and educational
-            reasons.
-          </p>
-          <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I encourage you to dive in and explore
-            all it has to offer. Thanks so much for your understanding and happy
-            exploring!
-          </p>
-          <form method="dialog">
-            <button className="btn btn-primary text-base-100 w-full mt-6">
-              Got It
-            </button>
-          </form>
-        </div>
-        <form method="dialog" className="modal-backdrop">
-          <button>close</button>
-        </form>
-      </dialog>
+      <AnimatedModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        icon={
+          <BiLogoDevTo className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-16 -left-16" />
+        }
+        title="Hello from the DEV!"
+        text=" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hey there! Just a little heads-up:
+        what you're seeing isn't an actual product. Everything in
+        this project is designed purely for demonstration and educational
+        reasons"
+        button="Got It"
+      />
     </>
   )
 }

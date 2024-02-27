@@ -5,7 +5,7 @@ import { useWindowSize } from '../../hooks/useWindowSize'
 import { VerticalAccordionProps, PanelProps } from '../../types/homeTypes'
 
 const VerticalAccordion: React.FC<VerticalAccordionProps> = ({ items }) => {
-  const [open, setOpen] = useState(items[0].id)
+  const [open, setOpen] = useState<number>(items[0].id)
 
   useEffect(() => {
     const interval = setInterval(() => {

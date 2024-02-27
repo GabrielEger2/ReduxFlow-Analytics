@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { AnimatedTabsProps, TabProps } from '../../types/layoutTypes'
 
 const AnimatedTabs: React.FC<AnimatedTabsProps> = ({ tabs, onTabSelect }) => {
-  const [selected, setSelected] = useState(tabs[0])
+  const [selected, setSelected] = useState<string>(tabs[0])
 
   const handleTabSelect = (tab: string) => {
     setSelected(tab)
