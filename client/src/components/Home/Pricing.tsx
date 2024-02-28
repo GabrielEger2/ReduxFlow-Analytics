@@ -38,12 +38,14 @@ const Pricing = () => {
   return (
     <section className="flex justify-center">
       <div className="flex flex-col items-center pt-8 lg:space-y-8">
-        <h1 className="text-6xl underline font-bold">Pricing Plans</h1>
-        <p className="w-[700px] text-center mt-10">
-          Whether you&apos;re a startup, a growing business, or a large
-          enterprise, our plans are tailored to support your journey every step
-          of the way.
-        </p>
+        <div className="flex flex-col items-center text-center px-8">
+          <h1 className="text-6xl underline font-bold">Pricing Plans</h1>
+          <p className="text-center mt-10">
+            Whether you&apos;re a startup, a growing business, or a large
+            enterprise, our plans are tailored to support your journey every
+            step of the way.
+          </p>
+        </div>
         <div className="mt-4">
           <AnimatedTabs tabs={tabs} onTabSelect={handleTabSelect} />
         </div>

@@ -11,7 +11,7 @@ const AnimatedTabs: React.FC<AnimatedTabsProps> = ({ tabs, onTabSelect }) => {
     onTabSelect(tab)
   }
   return (
-    <div className="px-4 flex items-center flex-wrap space-x-4">
+    <div className="flex items-center flex-wrap space-x-4">
       {tabs.map((tab) => (
         <Tab
           text={tab}
