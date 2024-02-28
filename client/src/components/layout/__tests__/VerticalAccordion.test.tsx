@@ -1,51 +1,61 @@
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, act } from '@testing-library/react'
 import VerticalAccordion from '../VerticalAccordion'
-import { useWindowSize } from '../../../hooks/useWindowSize'
+import { jest } from '@jest/globals'
 
-// Mock the useWindowSize hook
-jest.mock('../../hooks/useWindowSize', () => ({
-  useWindowSize: jest.fn(),
+// Mock useWindowSize hook
+jest.mock('../../../hooks/useWindowSize', () => ({
+  useWindowSize: () => ({ width: 1024 }),
 }))
 
-const mockItems = [
-  {
-    id: 1,
-    title: 'Item 1',
-    description: 'Description 1',
-    imgSrc: '',
-    icon: <div />,
-  },
-  {
-    id: 2,
-    title: 'Item 2',
-    description: 'Description 2',
-    imgSrc: '',
-    icon: <div />,
-  },
-  {
-    id: 3,
-    title: 'Item 3',
-    description: 'Description 3',
-    imgSrc: '',
-    icon: <div />,
-  },
-]
-
 describe('VerticalAccordion', () => {
-  beforeEach(() => {
-    useWindowSize.mockReturnValue({ width: 1024 })
+  const items = [
+    {
+      id: 1,
+      icon: <div />,
+      title: 'Panel 1',
+      imgSrc: 'url1',
+      description: 'Description 1',
+    },
+    {
+      id: 2,
+      icon: <div />,
+      title: 'Panel 2',
+      imgSrc: 'url2',
+      description: 'Description 2',
+    },
+  ]
+
+  it('renders the correct number of panels', () => {
+    const { getAllByRole } = render(<VerticalAccordion items={items} />)
+    expect(getAllByRole('button').length).toBe(items.length)
   })
 
-  test('renders correctly with the first item open', () => {
-    const { getByText } = render(<VerticalAccordion items={mockItems} />)
-    expect(getByText('Item 1')).toBeInTheDocument()
+  it('changes the open panel automatically', async () => {
+    jest.useFakeTimers()
+    const { getByText } = render(<VerticalAccordion items={items} />)
+
+    // Initially, first panel should be open
     expect(getByText('Description 1')).toBeInTheDocument()
+
+    // Advance timers by 10 seconds
+    act(() => {
+      jest.advanceTimersByTime(10000)
+    })
+
+    // Now, second panel should be open
+    expect(getByText('Description 2')).toBeInTheDocument()
+
+    jest.useRealTimers()
   })
 
-  test('opens a panel on click', () => {
-    const { getByText } = render(<VerticalAccordion items={mockItems} />)
-    const secondItemButton = getByText('Item 2')
-    fireEvent.click(secondItemButton)
+  it('allows manual panel change on click', () => {
+    const { getByText, getAllByRole } = render(
+      <VerticalAccordion items={items} />,
+    )
+
+    const secondPanelButton = getAllByRole('button')[1]
+    fireEvent.click(secondPanelButton)
+
     expect(getByText('Description 2')).toBeInTheDocument()
   })
 })
