@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import { Provider } from 'react-redux'
 
+import 'react-toastify/dist/ReactToastify.css'
 import './index.css'
 import { store } from './app/store.ts'
+import App from './App.tsx'
 
 const rootElement = document.getElementById('root')
 
