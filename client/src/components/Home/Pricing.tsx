@@ -37,7 +37,7 @@ const Pricing = () => {
 
   return (
     <section className="flex justify-center">
-      <div className="flex flex-col items-center pt-8 lg:space-y-8">
+      <div className="flex flex-col items-center lg:space-y-8">
         <div className="flex flex-col items-center text-center px-8">
           <h1 className="text-6xl underline font-bold">Pricing Plans</h1>
           <p className="text-center mt-10">

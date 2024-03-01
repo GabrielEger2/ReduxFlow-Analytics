@@ -23,14 +23,11 @@ const Home = () => {
         </div>
         <div
           id="aboutUs"
-          className="flex w-full justify-center lg:min-h-screen"
+          className="flex w-full justify-center mb-10 lg:mb-0 lg:min-h-screen"
         >
           <AboutUs />
         </div>
-        <div
-          id="pricing"
-          className="flex w-full justify-center lg:min-h-screen"
-        >
+        <div id="pricing" className="flex w-full justify-center mb-20">
           <Pricing />
         </div>
       </div>

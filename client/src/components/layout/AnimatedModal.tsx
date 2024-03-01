@@ -21,7 +21,7 @@ const AnimatedModal = ({
           className="bg-black/20 min-w-screen backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center overflow-y-scroll cursor-pointer"
         >
           <motion.div
-            initial={{ scale: 0, rotate: '8deg' }}
+            initial={{ scale: 0, rotate: '10deg' }}
             animate={{ scale: 1, rotate: '0deg' }}
             exit={{ scale: 0, rotate: '0deg' }}
             onClick={(e) => e.stopPropagation()}
