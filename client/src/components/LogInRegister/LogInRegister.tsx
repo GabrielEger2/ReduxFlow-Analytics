@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Form, Formik } from 'formik'
-import { loginSchema, registerSchema } from '../../schemas/loginRegisterSchema'
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 
+import { loginSchema, registerSchema } from '../../schemas/loginRegisterSchema'
 import {
   LogInRegisterProps,
   loginTypes,
@@ -37,16 +38,19 @@ const LogInRegister: React.FC<LogInRegisterProps> = ({
         dispatch(
           setUser({ id: response.logged_id, email: response.logged_email }),
         )
-        console.log(response.message)
+        toast.success(response.message)
       } catch (error) {
-        console.error('Failed to log in:', error)
+        console.error(error)
+        toast.error('Failed to log in')
       }
     } else {
       const { email, newPassword: password } = values as registerTypes
       try {
-        await register({ email, password }).unwrap()
+        const response = await register({ email, password }).unwrap()
+        toast.success(response.message)
       } catch (error) {
-        console.error('Failed to register:', error)
+        console.error(error)
+        toast.error('Failed to register')
       }
     }
     setIsLoading(false)
