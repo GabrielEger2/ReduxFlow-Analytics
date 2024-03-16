@@ -17,9 +17,6 @@ const SideBar = () => {
               <BiSolidWidget size={24} />
               <h1 className="underline text-2xl font-bold">ReduxFlow</h1>
             </div>
-            <button className="btn btn-sm btn-ghost">
-              <BiArrowFromRight size={24} />
-            </button>
           </div>
           <div className="h-full flex">
             <ul className="space-y-10 h-full w-full overflow-y-auto my-10 mx-4">

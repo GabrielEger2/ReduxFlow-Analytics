@@ -3,11 +3,15 @@ import Footer from './Footer'
 
 const PrivateRoute = ({ children }) => {
   return (
-    <div>
-      <SideBar />
-      {children}
-      <Footer />
-    </div>
+    <main>
+      <div className="flex">
+        <SideBar />
+        {children}
+      </div>
+      <div className="ml-[300px]">
+        <Footer />
+      </div>
+    </main>
   )
 }
 
