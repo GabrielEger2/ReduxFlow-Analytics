@@ -3,31 +3,47 @@ import { ToastContainer } from 'react-toastify'
 
 import Home from './pages/Home'
 import LogIn from './pages/LogIn'
+import ManagementMenu from './pages/ManagementMenu'
 
-import Footer from './components/layout/Footer'
-import Navbar from './components/layout/Navbar'
+import PublicRoute from './components/PageCore/PublicRoute'
+import PrivateRoute from './components/PageCore/PrivateRoute'
 
 const App = () => {
   return (
     <div style={{ overflowX: 'hidden' }}>
       <BrowserRouter>
-        <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LogIn />} />
+          <Route
+            path="/"
+            element={
+              <PublicRoute>
+                <Home />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <LogIn />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/management-menu"
+            element={
+              <PrivateRoute>
+                <ManagementMenu />
+              </PrivateRoute>
+            }
+          />
         </Routes>
-        <Footer />
         <ToastContainer
           position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
           newestOnTop
           closeOnClick
-          rtl={false}
           pauseOnFocusLoss
           draggable
-          pauseOnHover
-          theme="light"
         />
       </BrowserRouter>
     </div>
