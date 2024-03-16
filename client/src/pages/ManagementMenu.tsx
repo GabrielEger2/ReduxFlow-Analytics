@@ -60,7 +60,7 @@ const ManagementMenu = () => {
 
   return (
     <main className="flex justify-center w-full min-h-screen">
-      <div className="w-full max-w-[1600px] px-4 pt-28">
+      <div className="w-full px-10 mt-12">
         <div className="flex flex-col md:flex-row md:justify-between gap-6">
           <h1 className="text-3xl md:text-5xl font-semibold underline text-center">
             Management Menu
